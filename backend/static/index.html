@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encrypt/Decrypt App</title>
+    <style>
+      :root{
+        /* User-provided palette */
+        --c1: rgb(239, 236, 227); /* light beige */
+        --c2: rgb(143, 171, 212); /* light blue */
+        --c3: rgb(74, 112, 169);  /* darker blue (accent) */
+        --c4: rgb(0, 0, 0);       /* black (text) */
+
+        --bg-start: var(--c1);
+        --bg-end: var(--c2);
+        --card: rgba(255,255,255,0.96);
+        --accent: var(--c3);
+        --accent-contrast: var(--c1);
+        --text: var(--c4);
+        --muted: rgba(0,0,0,0.64);
+        --border: rgba(74,112,169,0.12);
+        --accent-shadow: rgba(74,112,169,0.12);
+      }
+      html,body{height:100%}
+      body {
+        margin:0;
+        background: linear-gradient(180deg,var(--bg-start),var(--bg-end));
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing:antialiased;
+      }
+      #root { padding:20px }
+
+      .app-container {
+        max-width: 680px;
+        margin: 32px auto;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+      }
+
+      h2{margin-top:0}
+
+      .drop-area{
+        border: 2px solid var(--border);
+        border-color: black;
+        padding: 14px;
+        border-radius: 8px;
+        background: rgb(143, 171, 212);
+        transition: border-color .12s, box-shadow .12s, transform .08s;
+      }
+      .drop-area.drag-over{ border-color: var(--accent); box-shadow: 0 8px 30px var(--accent-shadow); transform: translateY(-2px); }
+
+      .file-picker{ margin-top:8px }
+      input.file-input{ border-radius:6px; border:1px solid var(--border); padding:6px }
+
+      .selected-file{ margin-top:8px; font-size:13px; color:var(--text); font-weight:600 }
+
+      .password-row{ display:flex; gap:8px; margin-top:12px }
+      .password-input{ flex:1; padding:10px; border-radius:8px; border:2px solid var(--border); background:transparent; border-color: black;}
+
+      .primary-btn{ background:var(--accent); color:var(--accent-contrast); border:none; padding:10px 14px; border-radius:8px; cursor:pointer }
+      .primary-btn[disabled]{ opacity:0.6; cursor:not-allowed }
+      .secondary-btn{ background:transparent; border:2px solid var(--border); padding:8px 10px; border-radius:8px; cursor:pointer; border-color: black; }
+
+      .actions-row{ margin-top:12px; display:flex; align-items:center; gap:8px }
+      .status-text{ font-size:13px; color:var(--muted) }
+
+      .notes{ margin-top:18px; font-size:12px; color:var(--muted) }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React (UMD) from CDN so this tiny static UI works without a build step -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- App script -->
+    <script src="/static/app.js"></script>
+  </body>
+</html>
